@@ -43,6 +43,7 @@ carga de la descripción.*/
         printf("Ingrese la duracion \n");
         fflush(stdin);
         scanf("%d", &tareas[i]->Duracion);
+        printf("nuevos cambios");
     }
     
     
