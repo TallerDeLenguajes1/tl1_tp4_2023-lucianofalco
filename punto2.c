@@ -9,12 +9,15 @@ char *Descripcion;
 int Duracion; // entre 10 – 100
 }Tarea;
 
+Tarea * BuscarTarea(Tarea ** unTareaRealizada , Tarea** unaTareaPendiente ,  int cantidad, int buscado);
 int main(void)
 {
     int cantidad , i  ; 
         int contador ; 
     Tarea ** tareaspendientes ;
     Tarea **tareasRealizadas;
+    Tarea *TareaBuscada;
+    int buscado ;
     char *buff ;
 
     buff=(char*)malloc(sizeof(char)*100) ;
@@ -92,12 +95,47 @@ tiene que apuntar a null. Como se muestra en la gráfica a continuación.*/
             printf("Tarea #%i , %s\n" , i+1 ,tareaspendientes[i]->Descripcion);
             contador = contador+1 ; 
         }
-        
-        printf("Tarea #%i , %s\n" , i+1 ,tareaspendientes[i]->Descripcion);
-        contador = contador+1 ;     
+            
     }
     printf("\nLas tareas realizadas son  %d \n " , contador);
+
+    /*Cree un nuevo branch llamado busca-tarea e implemente una función de
+búsqueda de tarea por nro. de id de nombre BuscarTarea. La misma devuelve
+la tarea solicitada.*/
+
+    printf(" Ingrese el id de la tarea que quiere buscar \n");
+    scanf("%i" , &buscado);
+
+    TareaBuscada = BuscarTarea(tareasRealizadas , tareaspendientes , cantidad , buscado);
+
+    
+
     return 0;
+}
+
+Tarea * BuscarTarea(Tarea ** TareaRealizada , Tarea ** tareaspendientes ,  int cantidad , int buscado){
+    Tarea * aux ; 
+    int i = 0 ;
+    int bandera = 0 ;
+
+    for ( i = 0; i < cantidad; i++)
+    {
+        if( tareaspendientes[i]!= NULL && tareaspendientes[i]->TareaID == buscado ) {
+            bandera=1;
+            return *tareaspendientes ;z
+        }
+
+        if (tareaspendientes[i] != NULL && TareaRealizada[i]->TareaID == buscado ) 
+        {
+            bandera=1;
+            return *TareaRealizada;
+        }
+
+    }    
+        if (bandera == 0 ){
+            printf("\nNo existe una tarea con ese id\n");
+        }
+        
 }
 
 
